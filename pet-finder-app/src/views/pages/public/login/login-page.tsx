@@ -1,29 +1,42 @@
-import { ForwardedRef, forwardRef } from "react"
-import { Input } from "../../../components/inputs/input"
-import { Button } from "../../../components/buttons/button"
-// import logo from '../../../../assets/image/logo2.png'
+import logo from '@assets/image/logo2.png'
+import { Button } from "@components/buttons/button"
+import { Input } from "@components/inputs/input"
+import { useRef } from 'react';
+import { IoLockClosedOutline, IoPersonCircleOutline } from "react-icons/io5";
+import { CadastroPage, CadastroPageRef } from '../cadastro/cadastro-page';
+import { DefaultForm, DefaultFormRef } from '@components/form/default-form';
 
 export const LoginPage = () => {
+    const cadastroRef = useRef<CadastroPageRef>(null)
+    const formRef = useRef<DefaultFormRef>(null)
+
+    const fields = { user: "", senha: "" }
+
     return (
-        <div className="w-full h-[100dvh] bg-gradient-to-br from-teal-400 to-purple-600 flex flex-col">
+        <DefaultForm ref={formRef} config={fields} onSubmit={(values) => console.log(values)}>
 
-            <div className="h-[86%] flex flex-col items-center justify-end bg-white
-            rounded-b-2xl p-6 pb-8">
+            <div className="w-full h-[100dvh] bg-gradient-to-br from-teal-400 to-purple-600 flex flex-col">
 
-                {/* <img src={logo} alt="" /> */}
+                <div className="h-[86%] flex flex-col items-center justify-end bg-white rounded-b-2xl p-6 pb-8">
 
-                <div className="bg-[#E8E8E8] pt-6 px-4 pb-4 w-full rounded-3xl flex flex-col gap-5 items-center">
-                    <Input placeholder="Email" />
-                    <Input placeholder="Senha" isPassword />
-                    <Button titulo="Login" />
+                    <img src={logo} alt="" />
 
-                    <a className="text-xs text-[#3685CD]" href="#">Crie sua conta</a>
+                    <div className="bg-[#E8E8E8] pt-6 px-4 pb-4 w-full rounded-3xl flex flex-col gap-5 items-center">
+                        <Input placeholder="Email" name='user' icon={<IoPersonCircleOutline />} />
+                        <Input placeholder="Senha" name='senha' isPassword icon={<IoLockClosedOutline />} />
+                        <Button titulo="Login" onClick={() => formRef.current?.onSubmit()} />
+
+                        <a className="text-[14px] text-[#3685CD]" onClick={() => cadastroRef.current?.open()}>Crie sua conta</a>
+                    </div>
+
                 </div>
 
-            </div>
+                <div className="h-[14%] flex items-center justify-center"></div>
 
-            <div className="h-[14%] flex items-center justify-center"></div>
+                <CadastroPage ref={cadastroRef} />
 
-        </div>
+            </div >
+
+        </DefaultForm>
     )
 }
