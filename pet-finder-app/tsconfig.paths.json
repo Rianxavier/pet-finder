@@ -4,7 +4,8 @@
       "paths": {
         "@assets/*":["./assets/*"],
         "@components/*": ["./views/components/*"],
-        "@images/*": ["./assets/images/*"]
+        "@images/*": ["./assets/images/*"],
+        "@extensions/*": ["./extensions/*"]
       }
     },
     "exclude": ["node_modules"]
