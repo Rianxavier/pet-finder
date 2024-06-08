@@ -31,18 +31,18 @@ export const DefaultForm = forwardRef(<T extends FormConfig>(props: DefaultFormP
         onSubmit: (values) => { props.onSubmit(values) }
     })
 
-    const submitForm = useCallback(async () => {
-        if (!formik.isValid) {
-            const firstError = getFirstPropNameWithValue(formik.errors);
-            const errorMessage = formik.errors[firstError];
+    // const submitForm = useCallback(async () => {
+    //     if (!formik.isValid) {
+    //         const firstError = getFirstPropNameWithValue(formik.errors);
+    //         const errorMessage = formik.errors[firstError];
 
-            if (typeof errorMessage === 'string') {
+    //         if (typeof errorMessage === 'string') {
 
-            }
-        }
-        formik.handleSubmit();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [formik]);
+    //         }
+    //     }
+    //     formik.handleSubmit();
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [formik]);
 
     return (
         <form onSubmit={formik.handleSubmit} className="w-full">

@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom"
-import { LoginPage } from "../../views/pages/public/login/login-page"
+import { EscolhaPage } from "../../views/pages/public/escolha/escolha-page"
 
 export const PetFinderRouter = () => {
     return (
         <Routes>
             <Route>
-                <Route path="/" element={<LoginPage />} />
+                <Route path="/" element={<EscolhaPage />} />
             </Route>
         </Routes>
     )

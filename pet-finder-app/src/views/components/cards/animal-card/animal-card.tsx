@@ -14,7 +14,7 @@ export const AnimalCard = ({ model, ...props }: AnimalCardProps) => {
         <div className="h-[225px] bg-[#E8E8E8] rounded-2xl flex flex-col items-center p-2" onClick={props.onClick}>
             <h2 className="text-lg font-bold text-black">{model.nome}</h2>
 
-            <img src={ImageValidation(undefined)} alt="" className="w-full h-[130px] object-fill rounded-xl mb-4" />
+            <img src={ImageValidation(model.img)} alt="" className="w-full h-[130px] object-fill rounded-xl mb-4" />
 
             <p className="text-black text-xs font-medium uppercase">perdido há {calculateDaysDifference(model.dataPerdido)} dias</p>
 

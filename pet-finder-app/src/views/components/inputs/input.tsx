@@ -9,6 +9,7 @@ interface InputProps {
     placeholder?: string
     isPassword?: boolean
     isCadastro?: boolean
+    date?: boolean
 }
 
 export const Input = ({ ...props }: InputProps) => {
@@ -35,7 +36,7 @@ export const Input = ({ ...props }: InputProps) => {
         ${props.isCadastro ? "bg-gray-200" : "bg-white"}`}>
             <div className="h-[100%] flex items-center">{iconWithClasses}</div>
 
-            <input type={props.isPassword ? type : "text"} placeholder={props.placeholder}
+            <input type={props.isPassword ? type : props.date ? "date" : "text"} placeholder={props.placeholder}
                 className="w-full bg-transparent outline-none text-base" autoComplete="off"
                 value={value} onChange={handleChange} />
 

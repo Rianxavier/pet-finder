@@ -1,6 +1,6 @@
 interface ButtonProps {
     titulo?: string
-    onClick?: () => void
+    onClick: () => void
 }
 
 export const Button = ({ ...props }: ButtonProps) => {

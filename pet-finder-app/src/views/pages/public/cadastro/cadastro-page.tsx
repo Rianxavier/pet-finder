@@ -1,9 +1,10 @@
-import { ForwardedRef, forwardRef, useImperativeHandle, useState } from "react";
+import { ForwardedRef, forwardRef, useImperativeHandle, useRef, useState } from "react";
 import { IoLockClosedOutline, IoMenuOutline, IoPersonCircleOutline } from "react-icons/io5";
 import { IoIosArrowBack, IoMdPhonePortrait } from "react-icons/io";
 import { Input } from "@components/inputs/input";
 import { Button } from "@components/buttons/button";
 import { MdOutlineMarkunread } from "react-icons/md";
+import { DefaultForm, DefaultFormRef } from "@components/form/default-form";
 
 export interface CadastroPageRef {
     open: () => void
@@ -12,6 +13,7 @@ export interface CadastroPageRef {
 
 export const CadastroPage = forwardRef((props: any, ref: ForwardedRef<CadastroPageRef>) => {
     const [visible, setVisible] = useState<boolean>(false)
+    const formRef = useRef<DefaultFormRef>(null)
 
     useImperativeHandle(ref, () => ({
         open: () => setVisible(true),
@@ -30,16 +32,16 @@ export const CadastroPage = forwardRef((props: any, ref: ForwardedRef<CadastroPa
                 </div>
                 <h2 className="text-3xl text-white font-bold uppercase">Crie sua conta</h2>
             </header>
-
-            <div className="flex flex-col gap-6 h-[100%] p-5">
-                <Input placeholder="Email" icon={<MdOutlineMarkunread />} name="email" isCadastro />
-                <Input placeholder="Nome Completo" icon={<IoPersonCircleOutline />} name="nome" isCadastro />
-                <Input placeholder="Telefone" icon={<IoMdPhonePortrait />} isCadastro name="telefone" />
-                <Input placeholder="Senha" isPassword icon={<IoLockClosedOutline />} isCadastro name="senha" />
-                <Input placeholder="Confirmar senha" isPassword icon={<IoLockClosedOutline />} isCadastro name="confName" />
-                <Button titulo="Cadastrar" />
-            </div>
-
-        </div>
+            <DefaultForm ref={formRef} config={{}} onSubmit={() => { }}>
+                <div className="flex flex-col gap-6 h-[100%] p-5">
+                    <Input placeholder="Email" icon={<MdOutlineMarkunread />} name="email" isCadastro />
+                    <Input placeholder="Nome Completo" icon={<IoPersonCircleOutline />} name="nome" isCadastro />
+                    <Input placeholder="Telefone" icon={<IoMdPhonePortrait />} isCadastro name="telefone" />
+                    <Input placeholder="Senha" isPassword icon={<IoLockClosedOutline />} isCadastro name="senha" />
+                    <Input placeholder="Confirmar senha" isPassword icon={<IoLockClosedOutline />} isCadastro name="confName" />
+                    <Button titulo="Cadastrar" onClick={() => { }} />
+                </div>
+            </DefaultForm>
+        </div >
     )
 })
